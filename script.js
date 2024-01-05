@@ -44,6 +44,7 @@ function convertirIpv6(cadena) {
 
             }else{
                 arrayFinal.push("0");
+                arrayFinal.push("0");
                 i=i+2;
                 i--;
             } 
@@ -57,6 +58,7 @@ function convertirIpv6(cadena) {
         if(hexArray[i-1] == 0){
             arrayFinal.push("00");
         }else{
+  
             arrayFinal.push(hexArray[i-1]);
         }
     }
@@ -64,12 +66,24 @@ function convertirIpv6(cadena) {
   }
 
   let cadenaFinal = "";
-
+  console.log(hexArray);
+  console.log(arrayFinal);
   for(i=1; i <= arrayFinal.length; i++){
 
     if(i%2 == 0){
+        console.log("Numero: " + arrayFinal[i-1] + " longitud: " + arrayFinal[i-1].length)
+        if(arrayFinal[i-1].length == 1){
 
-        cadenaFinal += arrayFinal[i-1];
+            if(arrayFinal[i-1] == ":"){
+                cadenaFinal += arrayFinal[i-1];
+            }else{
+                cadenaFinal += "0";
+                cadenaFinal += arrayFinal[i-1];
+            }
+        }else{
+            cadenaFinal += arrayFinal[i-1];
+        }
+        
         cadenaFinal += ":";
 
     }else{
@@ -78,6 +92,7 @@ function convertirIpv6(cadena) {
 
     if(arrayFinal[i-1] == "0"){
         cadenaFinal += ":";
+        i++;
     }
     
 
