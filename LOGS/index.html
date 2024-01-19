@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página IPV6 BGP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <label for="inputTexto">Introduce el log:</label>
+  <textarea id="inputTexto" placeholder="Escribe el log aquí..."></textarea>
+  
+  <div class="checkbox-container">
+
+    <label for="sumarHora">Sumar 1 hora a todos los logs</label>
+    <input type="checkbox" id="sumarHora">
+    
+  </div>
+  
+  <button id="botonProcesar">Procesar</button>
+  <div id="resultado"></div>
+</div>
+
+
+<div id="tablaResultadosContainer">
+  <table id="tablaResultados">
+
+    <tr>
+      <th>Fecha/s Inicio (De cada corte detectado)</th>
+      <td><p id="fechaDown"></p></td>
+    </tr>
+
+    <tr>
+      <th>Hora/s Inicio (De cada corte detectado)</th>
+      <td><p id="horaDown"></p></td>
+    </tr>
+
+    <tr>
+      <th>Fecha/s Fin (De cada corte detectado)</th>
+      <td><p id="fechaUp"></p></td>
+    </tr>
+
+    <tr>
+      <th>Hora/s Fin (De cada corte detectado)</th>
+      <td><p id="horaUp"></p></td>
+    </tr>
+
+    <tr>
+      <th>Tiempo de cada corte (horas, min, seg) <br> <br> Suma total de la afectación (horas, min, seg)</th>
+      <td><p id="tiempoHoras"></p></td>
+    </tr>
+
+    <tr>
+      <th>Tiempo de cada corte (min, seg) <br> <br> Suma total de la afectación (min, seg)</th>
+      <td><p id="tiempoMinutos"></p></td>
+    </tr>
+
+    
+  </table>
+</div>
+
+<script type="module" src="main.js"></script>
+
+</body>
+</html>
+
