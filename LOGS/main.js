@@ -6,8 +6,8 @@ function parsearRegistro(registro) {
 }
 
 function calcularDiferenciaTiempo(inicio, fin, sumarUnaHora) {
-  const fechaInicio = new Date(inicio);
-  const fechaFin = new Date(fin);
+  let fechaInicio = new Date(inicio);
+  let fechaFin = new Date(fin);
 
    // Establecer el año actual
    const year = new Date().getFullYear();
@@ -19,15 +19,18 @@ function calcularDiferenciaTiempo(inicio, fin, sumarUnaHora) {
     fechaFin.setHours(fechaFin.getHours() + 1);
   }
 
+  console.log(fechaInicio)
+  console.log(fechaFin)
+
+  if(fechaInicio.getTime() == fechaFin.getTime()){
+    fechaFin.setSeconds(fechaFin.getSeconds() + 1);
+  }
+
   const diferenciaEnMilisegundos = fechaFin - fechaInicio;
 
   let horas = Math.floor(diferenciaEnMilisegundos / (1000 * 60 * 60));
   let minutos = Math.floor((diferenciaEnMilisegundos % (1000 * 60 * 60)) / (1000 * 60));
   let segundos = Math.floor((diferenciaEnMilisegundos % (1000 * 60)) / 1000);
-
-  if(horas == 0 && minutos == 0 && segundos == 0){
-    segundos = 1;
-  }
 
   return { fechaInicio, fechaFin, horas, minutos, segundos };
 }
@@ -83,6 +86,7 @@ function pad(numero) {
   return numero < 10 ? '0' + numero : numero;
 }
 
+
 document.getElementById('botonProcesar').addEventListener('click', function () {
 
   const elementosTdConP = document.querySelectorAll('td > p');
@@ -113,10 +117,11 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
   let horas = 0; let min = 0; let seg = 0; let minTotal = 0;
 
   for (let i = 0; i < entradasRegistro.length; i += 2) {
-    const timestampDown = parsearRegistro(entradasRegistro[i]);
-    const timestampUp = i + 1 < entradasRegistro.length ? parsearRegistro(entradasRegistro[i + 1]) : null;
- 
+    let timestampDown = parsearRegistro(entradasRegistro[i]);
+    let timestampUp = i + 1 < entradasRegistro.length ? parsearRegistro(entradasRegistro[i + 1]) : null;
+    console.log(timestampUp)
     if (timestampDown && timestampUp) {
+      
       const diferenciaTiempo = calcularDiferenciaTiempo(timestampDown, timestampUp, sumarUnaHora);
       let fechaInicio = formatearFecha(diferenciaTiempo.fechaInicio)
       let fechaFin = formatearFecha(diferenciaTiempo.fechaFin)
