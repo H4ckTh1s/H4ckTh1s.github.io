@@ -15,8 +15,8 @@ function calcularDiferenciaTiempo(inicio, fin, sumarUnaHora) {
    fechaFin.setFullYear(year);
 
   if (sumarUnaHora) {
-    fechaInicio.setHours(fechaInicio.getHours() + 1);
-    fechaFin.setHours(fechaFin.getHours() + 1);
+    fechaInicio.setHours(fechaInicio.getHours() + 2);
+    fechaFin.setHours(fechaFin.getHours() + 2);
   }
 
   console.log(fechaInicio)
