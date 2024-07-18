@@ -145,7 +145,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
 
 
       if (arrayFechasDown.includes(fechaInicio)) {
-        horaDown.innerHTML += `<br>${horasInicio}`
+        horaDown.innerHTML += `${horasInicio} <br>`
+        arrayFechasDown.push(fechaInicio);
       }else{
         arrayFechasDown.push(fechaInicio);
         if(i==0){
@@ -154,11 +155,12 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
           //horaDown.innerHTML += "<br><br>" + fechaInicio + "<br><br>";
           
         }
-        horaDown.innerHTML += horasInicio
+        horaDown.innerHTML += `${horasInicio} <br>`
       }
       
       if (arrayFechasUp.includes(fechaFin)) {
-        horaUp.innerHTML += `<br>${horasFin}`
+        horaUp.innerHTML += `${horasFin} <br>`
+        arrayFechasUp.push(fechaFin);
       }else{
         arrayFechasUp.push(fechaFin);
         if(i==0){
@@ -167,7 +169,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
           //horaUp.innerHTML += "<br><br>" + fechaFin + "<br><br>";
           
         }
-        horaUp.innerHTML += horasFin
+        horaUp.innerHTML += `${horasFin} <br>`
       }
 
       let horasmin=diferenciaTiempo.horas*60;
@@ -176,8 +178,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
       horas += diferenciaTiempo.horas; min += diferenciaTiempo.minutos; seg += diferenciaTiempo.segundos; minTotal += mostrarMin;
 
       if(arrayFechas.includes(fechaInicioFin)){
-        tiempoHoras.innerHTML += `<br>${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg`;
-        tiempoMinutos.innerHTML += `<br>${mostrarMin} min, ${diferenciaTiempo.segundos} seg`;
+        tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg <br>`;
+        tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg <br>`;
       }else{
 
         arrayFechas += fechaInicioFin;
@@ -190,8 +192,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
           //tiempoMinutos.innerHTML += "<br><br>" + fechaInicioFin + "<br><br>";
         }
    
-        tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg`;
-        tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg`;
+        tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg <br>`;
+        tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg <br>`;
 
       } 
 
