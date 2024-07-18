@@ -46,7 +46,7 @@ function formatearFecha(fecha) {
   return `${dia}/${mes}/${year}`;
 }
 
-function corregirFormatoTiempo(horas, minutos, segundos) {
+function corregirFormatoTiempo(indice, horas, minutos, segundos) {
 
   minutos += Math.floor(segundos / 60);
   segundos %= 60;
@@ -54,19 +54,28 @@ function corregirFormatoTiempo(horas, minutos, segundos) {
   horas += Math.floor(minutos / 60);
   minutos %= 60;
 
-  const resultado = `<br><br>TIEMPO TOTAL: <br> <br> ${horas} horas, ${minutos} min, ${segundos} seg`;
-
-  return resultado;
+  if(indice > 2){
+    let resultado = `<br><br>TIEMPO TOTAL: <br> <br> ${horas} horas, ${minutos} min, ${segundos} seg`;
+    return resultado;
+  }else{
+    let resultado = "";
+    return resultado;
+  }
 }
 
-function corregirFormatoTiempoMin(minutos, segundos) {
+function corregirFormatoTiempoMin(indice, minutos, segundos) {
 
   minutos += Math.floor(segundos / 60);
   segundos %= 60;
 
-  const resultado = `<br><br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
-
-  return resultado;
+  if(indice > 2){
+    let resultado = `<br><br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
+    return resultado;
+  }else{
+    let resultado = "";
+    return resultado;
+  }
+  
 }
 
 function obtenerHoraDesdeFecha(fecha) {
@@ -116,6 +125,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
 
   let horas = 0; let min = 0; let seg = 0; let minTotal = 0;
 
+  const indice = entradasRegistro.length;
+
   for (let i = 0; i < entradasRegistro.length; i += 2) {
     let timestampDown = parsearRegistro(entradasRegistro[i]);
     let timestampUp = i + 1 < entradasRegistro.length ? parsearRegistro(entradasRegistro[i + 1]) : null;
@@ -138,9 +149,9 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
       }else{
         arrayFechasDown.push(fechaInicio);
         if(i==0){
-          horaDown.innerHTML += fechaInicio + "<br><br>";
+          //horaDown.innerHTML += fechaInicio + "<br><br>";
         }else{
-          horaDown.innerHTML += "<br><br>" + fechaInicio + "<br><br>";
+          //horaDown.innerHTML += "<br><br>" + fechaInicio + "<br><br>";
           
         }
         horaDown.innerHTML += horasInicio
@@ -151,9 +162,9 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
       }else{
         arrayFechasUp.push(fechaFin);
         if(i==0){
-          horaUp.innerHTML += fechaFin + "<br><br>";
+          //horaUp.innerHTML += fechaFin + "<br><br>";
         }else{
-          horaUp.innerHTML += "<br><br>" + fechaFin + "<br><br>";
+          //horaUp.innerHTML += "<br><br>" + fechaFin + "<br><br>";
           
         }
         horaUp.innerHTML += horasFin
@@ -172,11 +183,11 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
         arrayFechas += fechaInicioFin;
 
         if(i==0){
-          tiempoHoras.innerHTML += fechaInicioFin + "<br><br>";
-          tiempoMinutos.innerHTML +=  fechaInicioFin + "<br><br>";
+          //tiempoHoras.innerHTML += fechaInicioFin + "<br><br>";
+          //tiempoMinutos.innerHTML +=  fechaInicioFin + "<br><br>";
         }else{
-          tiempoHoras.innerHTML += "<br><br>" + fechaInicioFin + "<br><br>";
-          tiempoMinutos.innerHTML += "<br><br>" + fechaInicioFin + "<br><br>";
+          //tiempoHoras.innerHTML += "<br><br>" + fechaInicioFin + "<br><br>";
+          //tiempoMinutos.innerHTML += "<br><br>" + fechaInicioFin + "<br><br>";
         }
    
         tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg`;
@@ -195,8 +206,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
     fechaUp.innerHTML += arrayFechasUp[i] + "<br>"
   }
 
-  tiempoHoras.innerHTML += corregirFormatoTiempo(horas,min,seg);
-  tiempoMinutos.innerHTML += corregirFormatoTiempoMin(minTotal,seg);
+  tiempoHoras.innerHTML += corregirFormatoTiempo(indice, horas,min,seg);
+  tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
 
 
 });
