@@ -55,7 +55,7 @@ function corregirFormatoTiempo(indice, horas, minutos, segundos) {
   minutos %= 60;
 
   if(indice > 2){
-    let resultado = `<br><br>TIEMPO TOTAL: <br> <br> ${horas} horas, ${minutos} min, ${segundos} seg`;
+    let resultado = `<br>TIEMPO TOTAL: <br> <br> ${horas} horas, ${minutos} min, ${segundos} seg`;
     return resultado;
   }else{
     let resultado = "";
@@ -69,12 +69,21 @@ function corregirFormatoTiempoMin(indice, minutos, segundos) {
   segundos %= 60;
 
   if(indice > 2){
-    let resultado = `<br><br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
+    let resultado = `<br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
     return resultado;
   }else{
     let resultado = "";
     return resultado;
   }
+  
+}
+
+function corregirFormatoTiempoSeg(indice, minutos, segundos) {
+
+  segundos += Math.floor(minutos * 60);
+
+    let resultado = `<br>${segundos}`;
+    return resultado;
   
 }
 
@@ -119,6 +128,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
   const fechaDown = document.getElementById('fechaDown');
   const tiempoHoras = document.getElementById('tiempoHoras');
   const tiempoMinutos = document.getElementById('tiempoMinutos');
+  const tiempoSegundos = document.getElementById('tiempoSegundos');
   const fechaUp = document.getElementById('fechaUp');
   const horaDown = document.getElementById('horaDown');
   const horaUp = document.getElementById('horaUp');
@@ -210,6 +220,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
 
   tiempoHoras.innerHTML += corregirFormatoTiempo(indice, horas,min,seg);
   tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
+  tiempoSegundos.innerHTML += corregirFormatoTiempoSeg(indice, minTotal,seg);
 
 
 });
