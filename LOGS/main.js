@@ -69,7 +69,8 @@ function corregirFormatoTiempoMin(indice, minutos, segundos) {
   segundos %= 60;
 
   if(indice > 2){
-    let resultado = `<br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
+    //let resultado = `<br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
+    let resultado = `${minutos},${segundos}`;
     return resultado;
   }else{
     let resultado = "";
@@ -203,7 +204,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
         }
    
         tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg <br>`;
-        tiempoMinutos.innerHTML += `${mostrarMin},${diferenciaTiempo.segundos}<br>`;
+        //tiempoMinutos.innerHTML += `${mostrarMin},${diferenciaTiempo.segundos}<br>`;
 
       } 
 
@@ -219,7 +220,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
   }
 
   tiempoHoras.innerHTML += corregirFormatoTiempo(indice, horas,min,seg);
-  //tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
+  tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
   //tiempoSegundos.innerHTML += corregirFormatoTiempoSeg(indice, minTotal,seg);
 
 
