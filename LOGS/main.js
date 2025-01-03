@@ -189,7 +189,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
 
       if(arrayFechas.includes(fechaInicioFin)){
         tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg <br>`;
-        tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg <br>`;
+        //tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg <br>`;
       }else{
 
         arrayFechas += fechaInicioFin;
@@ -203,7 +203,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
         }
    
         tiempoHoras.innerHTML += `${diferenciaTiempo.horas} horas, ${diferenciaTiempo.minutos} min, ${diferenciaTiempo.segundos} seg <br>`;
-        tiempoMinutos.innerHTML += `${mostrarMin} min, ${diferenciaTiempo.segundos} seg <br>`;
+        tiempoMinutos.innerHTML += `${mostrarMin},${diferenciaTiempo.segundos}<br>`;
 
       } 
 
@@ -219,8 +219,8 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
   }
 
   tiempoHoras.innerHTML += corregirFormatoTiempo(indice, horas,min,seg);
-  tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
-  tiempoSegundos.innerHTML += corregirFormatoTiempoSeg(indice, minTotal,seg);
+  //tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
+  //tiempoSegundos.innerHTML += corregirFormatoTiempoSeg(indice, minTotal,seg);
 
 
 });
