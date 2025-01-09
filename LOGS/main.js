@@ -68,14 +68,9 @@ function corregirFormatoTiempoMin(indice, minutos, segundos) {
   minutos += Math.floor(segundos / 60);
   segundos %= 60;
 
-  if(indice > 2){
     //let resultado = `<br>TIEMPO TOTAL: <br><br> ${minutos} min, ${segundos} seg`;
     let resultado = `${minutos},${segundos}`;
     return resultado;
-  }else{
-    let resultado = "";
-    return resultado;
-  }
   
 }
 
