@@ -63,6 +63,19 @@ function corregirFormatoTiempo(indice, horas, minutos, segundos) {
   }
 }
 
+
+function corregirFormatoTiempoExcel(indice, horas, minutos, segundos) {
+
+  minutos += Math.floor(segundos / 60);
+  segundos %= 60;
+
+  horas += Math.floor(minutos / 60);
+  minutos %= 60;
+
+  let resultado = `${horas}:${minutos}:${segundos}`;
+  return resultado;
+}
+
 function corregirFormatoTiempoMin(indice, minutos, segundos) {
 
   minutos += Math.floor(segundos / 60);
@@ -125,6 +138,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
   const tiempoHoras = document.getElementById('tiempoHoras');
   const tiempoMinutos = document.getElementById('tiempoMinutos');
   const tiempoSegundos = document.getElementById('tiempoSegundos');
+  const tiempoExcel = document.getElementById('tiempoExcel');
   const fechaUp = document.getElementById('fechaUp');
   const horaDown = document.getElementById('horaDown');
   const horaUp = document.getElementById('horaUp');
@@ -216,6 +230,7 @@ document.getElementById('botonProcesar').addEventListener('click', function () {
 
   tiempoHoras.innerHTML += corregirFormatoTiempo(indice, horas,min,seg);
   tiempoMinutos.innerHTML += corregirFormatoTiempoMin(indice, minTotal,seg);
+  tiempoExcel.innerHTML += corregirFormatoTiempoExcel(indice, horas,min,seg);
   //tiempoSegundos.innerHTML += corregirFormatoTiempoSeg(indice, minTotal,seg);
 
 
